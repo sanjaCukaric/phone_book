@@ -1,0 +1,12 @@
+<mat-accordion multi="true" *ngIf="users.length > 0">
+  <mat-expansion-panel *ngFor="let user of users">
+    <mat-expansion-panel-header>
+      {{ user.firstName }} {{ user.lastName }}
+    </mat-expansion-panel-header>
+    <p>{{ "phone number: " }} {{ user.phoneNumber }}</p>
+    <mat-action-row>
+      <button mat-button color="warn" (click)="onDelete(user.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="warning" *ngIf="!(users.length > 0)"> No user found! Search again. </p>

@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    margin-top:20px;
+}
+
+.warning {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
