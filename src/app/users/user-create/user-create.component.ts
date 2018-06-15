@@ -25,13 +25,5 @@ export class UserCreateComponent implements OnInit {
     form.resetForm();
   }
 
-  onSearch(lastName: string) {
-    this.usersService.searchUser(lastName);
-  }
-
-  getAllUsers() {
-    this.usersService.getAllUsers();
-  }
-
 
 }

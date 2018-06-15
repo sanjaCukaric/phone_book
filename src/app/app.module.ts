@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UsersService } from './users/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     MatInputModule,

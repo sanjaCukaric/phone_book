@@ -8,3 +8,13 @@
     text-align: center;
 }
 
+.btn {
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+
+.form-field {
+    width:100%;
+}
+

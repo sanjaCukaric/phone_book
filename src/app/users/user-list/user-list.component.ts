@@ -31,6 +31,15 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.usersService.deleteUser(userId);
   }
 
+  onSearch(lastName) {
+    console.log(lastName);
+    this.usersService.searchUser(lastName);
+  }
+
+  getAllUsers() {
+    this.usersService.getAllUsers();
+  }
+
 
 
 }

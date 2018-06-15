@@ -13,9 +13,5 @@
       <mat-error *ngIf="phoneNumber.invalid">Please enter a phone number.</mat-error>
     </mat-form-field>
     <button mat-raised-button class="btn" color="accent" type="submit">Save</button>
-    <button mat-raised-button class="btn" color="primary" type="button" (click)="onSearch(f.value.lastName)">Search</button>
-    <button mat-raised-button class="btn" color="primary" type="button" (click)="getAllUsers()">All Users</button>
-    <p>
-      <abbr>*</abbr> Search is by Last Name.</p>
   </form>
 </mat-card>
