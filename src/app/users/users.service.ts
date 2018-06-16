@@ -3,6 +3,10 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+const BACKEND_URL = environment.apiUrl + '/users/';
 
 
 @Injectable()
@@ -10,14 +14,14 @@ export class UsersService {
 
     private users: User[] = [];
     filteredUsers: User[];
-    private usersUpdated = new Subject<User[]>();
+    usersUpdated = new Subject<User[]>();
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
 
     }
 
     getUsers() {
-        this.http.get<{ message: string, users: any }>('http://localhost:3000/api/users')
+        this.http.get<{ message: string, users: any }>(BACKEND_URL)
             .pipe(map((userData) => {
                 return userData.users.map(user => {
                     return {
@@ -34,23 +38,24 @@ export class UsersService {
             });
     }
 
-    getUsersUpdateListener() {
-        return this.usersUpdated.asObservable();
-    }
+    // getUsersUpdateListener() {
+    //     return this.usersUpdated.asObservable();
+    // }
 
     addUser(firstName: string, lastName: string, phoneNumber: string) {
         const user: User = { id: null, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber };
-        this.http.post<{ message: string, userId: string }>('http://localhost:3000/api/users', user)
+        this.http.post<{ message: string, userId: string }>(BACKEND_URL, user)
             .subscribe(responseData => {
                 const id = responseData.userId;
                 user.id = id;
                 this.users.push(user);
                 this.usersUpdated.next([...this.users]);
+                this.router.navigate(['/']);
             });
     }
 
     deleteUser(userId: string) {
-        this.http.delete('http://localhost:3000/api/users/' + userId)
+        this.http.delete(BACKEND_URL + userId)
             .subscribe(() => {
                 const updatedUsers = this.users.filter(user => user.id !== userId);
                 this.users = updatedUsers;

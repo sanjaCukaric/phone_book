@@ -9,7 +9,7 @@
       <mat-error *ngIf="lastName.invalid">Please enter last name.</mat-error>
     </mat-form-field>
     <mat-form-field class="form-field">
-      <input matInput placeholder="Phone Number" ngModel name="phoneNumber" required #phoneNumber="ngModel">
+      <input matInput placeholder="Phone Number" ngModel name="phoneNumber" required #phoneNumber="ngModel" [pattern]="'^[0-9]*$'">
       <mat-error *ngIf="phoneNumber.invalid">Please enter a phone number.</mat-error>
     </mat-form-field>
     <button mat-raised-button class="btn" color="accent" type="submit">Save</button>
