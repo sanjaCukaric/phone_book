@@ -38,10 +38,6 @@ export class UsersService {
             });
     }
 
-    // getUsersUpdateListener() {
-    //     return this.usersUpdated.asObservable();
-    // }
-
     addUser(firstName: string, lastName: string, phoneNumber: string) {
         const user: User = { id: null, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber };
         this.http.post<{ message: string, userId: string }>(BACKEND_URL, user)

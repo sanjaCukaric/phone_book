@@ -38,7 +38,4 @@ export class UserListComponent implements OnInit, OnDestroy {
   getAllUsers() {
     this.usersService.getAllUsers();
   }
-
-
-
 }
