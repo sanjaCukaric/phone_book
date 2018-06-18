@@ -64,7 +64,7 @@ export class UsersService {
     }
 
     searchUser(lastName: string) {
-        this.filteredUsers = this.users.filter(user => user.lastName === lastName);
+        this.filteredUsers = this.users.filter(user => user.lastName.toLowerCase() === lastName.toLocaleLowerCase());
         this.usersUpdated.next([...this.filteredUsers]);
     }
 

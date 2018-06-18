@@ -32,7 +32,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   onSearch(lastName) {
-    console.log(lastName);
     this.usersService.searchUser(lastName);
   }
 
