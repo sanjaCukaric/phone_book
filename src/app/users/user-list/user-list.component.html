@@ -1,13 +1,8 @@
 <mat-card class="card">
 
   <mat-form-field class="form-field">
-    <input matInput placeholder="Last Name" ngModel name="lastName" required #lastName>
+    <input matInput placeholder="Search User by Last Name" ngModel name="lastName" required #lastName (input)="searchStream.next(lastName.value)">
   </mat-form-field>
-
-  <button mat-raised-button class="btn" color="primary" type="button" (click)="onSearch(lastName.value)">Search</button>
-  <button mat-raised-button class="btn" color="primary" type="button" (click)="getAllUsers()">All Users</button>
-
-
   <mat-accordion multi="true" *ngIf="users.length > 0">
     <mat-expansion-panel *ngFor="let user of users">
       <mat-expansion-panel-header>
@@ -20,5 +15,4 @@
     </mat-expansion-panel>
   </mat-accordion>
   <p class="warning" *ngIf="!(users.length > 0)"> No user found! Search again. </p>
-
 </mat-card>

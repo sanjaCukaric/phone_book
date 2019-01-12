@@ -2,7 +2,7 @@ import { User } from './user.model';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
@@ -59,13 +59,9 @@ export class UsersService {
             });
     }
 
-    searchUser(lastName: string) {
-        this.filteredUsers = this.users.filter(user => user.lastName.toLowerCase() === lastName.toLocaleLowerCase());
-        this.usersUpdated.next([...this.filteredUsers]);
-    }
-
-    getAllUsers() {
-        this.filteredUsers = this.users;
-        this.usersUpdated.next([...this.filteredUsers]);
+    searchUser(lastName) {
+        const users = [];
+        users.push(this.users.filter(e => e.lastName.toLowerCase().search(lastName.toLowerCase()) !== -1));
+        return users;
     }
 }
